@@ -2,6 +2,8 @@
 
 def _dump_local_variables(pry)
   Thread.new do
+    Thread.current.report_on_exception = false
+
     File.open("#{ENV['HOME']}/.pry_locals", 'w') do |f|
       f.puts Pry::Command::Ls::LocalVars.new({}, pry).output_self
     end
