@@ -1,0 +1,9 @@
+#!/bin/bash
+
+LOCALS_FILE=$HOME/.pry_locals
+
+clear;
+fswatch -l 0.1 -0 $LOCALS_FILE | while read -d "" event; do
+  clear;
+  cat $LOCALS_FILE;
+done
